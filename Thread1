@@ -1,0 +1,82 @@
+// import java.util.*;
+// class myThread implements Runnable{
+//     private String name;
+//     private int number;
+//     myThread(int n,String name){
+//         this.name=name;
+//         this.number=n;
+//     }
+//     public void run(){
+//         System.out.println(name +"Thread: Started");
+//         if(number<0)System.out.println(name+ "Thread: Error");
+//         else{
+//             int fact=1;
+//             for(int i=2;i<=number;i++){
+//                 fact*=i;
+//             }
+//             System.out.println(name +"Thread: "+ fact);
+//             System.out.println(name+ "Thread: Ended");
+//         }
+
+//     }
+// }
+// public class Threading{
+//     public static void main(String[] args) {
+//         System.out.println("Main Thread Started");
+//         Scanner in=new Scanner(System.in);
+//         System.out.println("Enter the number: ");
+//         int n=in.nextInt();
+//         myThread mt1=new myThread(n,"Factorial");
+//         Thread nt=new Thread(mt1);
+//         nt.start();
+//         System.out.println("Main Thread Ended");
+//     }
+// }
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+class Frame implements ActionListener{
+    JLabel lb1,lb2,lb;
+    JTextField fd1,fd2;
+    JButton btn;
+    Frame(){
+        JFrame frm=new JFrame("Admission Count");
+        frm.setSize(1000,100);
+        frm.setLayout(new GridLayout(4,2));
+        frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        lb1=new JLabel("CSE Count: ");
+        fd1=new JTextField(5);
+        lb2=new JLabel("CSBS Count: ");
+        fd2=new JTextField(5);
+        btn=new JButton("Submit");
+        btn.addActionListener(this);
+        lb=new JLabel("");
+        frm.add(fd1);
+        frm.add(fd2);
+        frm.add(lb1);
+        frm.add(lb2);
+        frm.add(btn);
+        frm.add(new JLabel());
+        frm.add(lb);
+        frm.setVisible(true);
+    }
+    public void actionPerformed(ActionEvent ae){
+        int cseCount=0;
+        int csbsCount=0;
+        Boolean invalidFlag=false;
+        try{
+            cseCount=Integer.parseInt(fd1.getText());
+            csbsCount=Integer.parseInt(fd2.getText());
+        }catch(NumberFormatException e){
+            invalidFlag=true;
+        }
+
+    }
+}
+public class Threading{
+    public static void main(String[] args) {
+        new Frame();
+    }
+}
